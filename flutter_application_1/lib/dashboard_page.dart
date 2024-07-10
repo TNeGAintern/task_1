@@ -12,15 +12,9 @@ class _DashboardPageState extends State<DashboardPage> {
   String? fileName;
 
   final Map<String, String> projectDescriptions = {
-<<<<<<< HEAD
     'E-paarvai': 'PROJECT DESCRIPTION: e-Paarvai Eye Cataract Detection Project is to develop an advanced, accurate, and accessible system for detecting cataracts at an early stage.',
     'Crop Detection': 'PROJECT DESCRIPTION: The Crop Detection Project aims to leverage advanced machine learning and computer vision techniques to accurately identify and classify different types of crops in agricultural fields.',
     'Pest Detection': 'PROJECT DESCRIPTION: The Pest Detection Project aims to develop and implement a comprehensive system for early detection and management of pests.',
-=======
-    'E-paarvai': ' PROJECT DESCRIPTION : e-Paarvai Eye Cataract Detection Project is to develop an advanced, accurate, and accessible system for detecting cataracts at an early stage.',
-    'Crop detection': 'PROJECT DEXCRIPTION: The Crop Detection Project aims to leverage advanced machine learning and computer vision techniques to accurately identify and classify different types of crops in agricultural fields.',
-    'Pest detection': 'PROJECT DESCRIPTION: The Pest Detection Project aims to develop and implement a comprehensive system for early detection and management of pests.',
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
   };
 
   void _onProjectChanged(String? value) {
@@ -189,7 +183,6 @@ class _DashboardPageState extends State<DashboardPage> {
             // Predict button
             ElevatedButton(
               onPressed: () {
-<<<<<<< HEAD
                 if (selectedProject != null) {
                   Navigator.pushNamed(
                     context,
@@ -199,11 +192,6 @@ class _DashboardPageState extends State<DashboardPage> {
                 }
               },
               style: ElevatedButton.styleFrom(
-=======
-                Navigator.pushNamed(context, '/upload_image');
-              },
-              style: ElevatedButton.styleFrom( 
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
                 backgroundColor: Color.fromARGB(255, 137, 184, 207),
                 padding: EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
@@ -221,7 +209,3 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937

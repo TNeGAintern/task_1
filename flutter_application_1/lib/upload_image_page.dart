@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
-=======
-import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
 
 class ImageUploadPage extends StatefulWidget {
   @override
@@ -16,7 +10,6 @@ class ImageUploadPage extends StatefulWidget {
 }
 
 class _ImageUploadPageState extends State<ImageUploadPage> {
-<<<<<<< HEAD
   List<Uint8List?> _uploadedImages = [null, null];
   bool _isImageSubmitted = false;
   bool _showSubmitButton = true;
@@ -34,29 +27,15 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
   }
 
   Future<void> _pickImage(int index, ImageSource source) async {
-=======
-  Uint8List? _uploadedImage;
-  bool _isImageSubmitted = false;
-  bool _showSubmitButton = true;
-  final ImagePicker _picker = ImagePicker();
-
-  Future<void> _pickImage(ImageSource source) async {
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
     try {
       final XFile? pickedFile = await _picker.pickImage(source: source);
       if (pickedFile != null) {
         final imageBytes = await pickedFile.readAsBytes();
         setState(() {
-<<<<<<< HEAD
           _uploadedImages[index] = imageBytes;
           _isImageSubmitted = false;
           _showSubmitButton = true;
           _grayscaleImageUrls[index] = null;
-=======
-          _uploadedImage = imageBytes;
-          _isImageSubmitted = false;
-          _showSubmitButton = true;
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
         });
       }
     } catch (e) {
@@ -64,7 +43,6 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
     }
   }
 
-<<<<<<< HEAD
   Future<void> _uploadImages() async {
     final request = http.MultipartRequest(
       'POST',
@@ -128,9 +106,6 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
   }
 
   void _showImageSourceDialog(int index) {
-=======
-  void _showImageSourceDialog() {
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -140,11 +115,7 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-<<<<<<< HEAD
               _pickImage(index, ImageSource.camera);
-=======
-              _pickImage(ImageSource.camera);
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
             },
             child: Row(
               children: <Widget>[
@@ -157,11 +128,7 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-<<<<<<< HEAD
               _pickImage(index, ImageSource.gallery);
-=======
-              _pickImage(ImageSource.gallery);
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
             },
             child: Row(
               children: <Widget>[
@@ -176,31 +143,11 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
     );
   }
 
-<<<<<<< HEAD
   @override
   Widget build(BuildContext context) {
     final isEpaarvai = _projectName == 'E-paarvai';
     final isSingleImageProject = _projectName == 'Crop Detection' || _projectName == 'Pest Detection';
 
-=======
-  void _submitImage() {
-    setState(() {
-      _isImageSubmitted = true;
-      _showSubmitButton = false;
-    });
-  }
-
-  void _deleteImage() {
-    setState(() {
-      _uploadedImage = null;
-      _isImageSubmitted = false;
-      _showSubmitButton = true;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
     return Scaffold(
       appBar: AppBar(
         title: Text('Image Upload'),
@@ -209,7 +156,6 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-<<<<<<< HEAD
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -346,116 +292,17 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
                           fit: BoxFit.cover,
                         ),
                       ),
+                      
                     ],
                   ],
                 ],
               ],
             ),
-=======
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Upload Image',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              SizedBox(height: 16),
-
-              GestureDetector(
-                onTap: _showImageSourceDialog,
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color.fromARGB(255, 110, 183, 220), width: 2),
-                  ),
-                  child: _uploadedImage != null
-                      ? Image.memory(
-                          _uploadedImage!,
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
-                        )
-                      : Icon(
-                          Icons.camera_alt,
-                          color: Colors.grey[800],
-                          size: 60,
-                        ),
-                ),
-              ),
-              SizedBox(height: 20),
-              if (_uploadedImage != null && _showSubmitButton)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: _submitImage,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 134, 196, 227),
-                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Text(
-                        'Submit',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    ElevatedButton(
-                      onPressed: _deleteImage,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 203, 107, 100),
-                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Text(
-                        'Delete',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-              SizedBox(height: 20),
-              if (_isImageSubmitted && _uploadedImage != null) ...[
-                Text(
-                  'Info about the picture',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color.fromARGB(255, 137, 184, 207), width: 2),
-                  ),
-                  child: Image.memory(
-                    _uploadedImage!,
-                    width: 300,
-                    height: 300,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ],
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
           ),
         ),
       ),
     );
   }
-<<<<<<< HEAD
 
   Widget _buildImageUploadContainer(int index) {
     return Container(
@@ -481,9 +328,3 @@ class _ImageUploadPageState extends State<ImageUploadPage> {
     );
   }
 }
-=======
-}
-
-
-
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937

@@ -19,11 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/dashboard_page': (context) => DashboardPage(),
-<<<<<<< HEAD
-        '/upload_image': (context) => ImageUploadPage(), // Provide a default value or handle this dynamically
-=======
         '/upload_image': (context) => ImageUploadPage(),
->>>>>>> 2a1e7452851452c7c11c56a0bf670ce861913937
       },
     );
   }
